@@ -1,0 +1,10 @@
+---
+steps:
+  - label: Build and test CDK App
+    command: echo Hello World!
+    agents:
+      queue: default
+  - label: Run Docker Build
+    command: docker build . 
+    agents:
+      queue: default
