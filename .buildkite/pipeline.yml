@@ -7,4 +7,4 @@ steps:
   - label: Run Docker Build
     command: docker build . 
     agents:
-      queue: default
+      queue: kubernetes
