@@ -2,7 +2,6 @@
 steps:
   - label: hello
     key: hello
-    command: echo Hello World!
     agents:
       queue: kubernetes
     plugins:
