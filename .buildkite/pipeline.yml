@@ -8,3 +8,8 @@ steps:
     command: docker build . 
     agents:
       queue: kubernetes
+    plugins:
+      - kubernetes:
+          gitEnvFrom:
+            - secretRef:
+                name: ssh-credentials
