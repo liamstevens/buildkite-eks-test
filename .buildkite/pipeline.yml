@@ -1,10 +1,17 @@
 ---
 steps:
-  - label: Build and test CDK App
+  - label: hello
+    key: hello
     command: echo Hello World!
     agents:
       queue: kubernetes
+    plugins:
+     - kubernetes:
+          gitEnvFrom:
+            - secretRef:
+                name: ssh-credentials
   - label: Run Docker Build
+    key: docker-build
     agents:
       queue: kubernetes
     plugins:
