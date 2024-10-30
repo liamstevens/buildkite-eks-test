@@ -5,10 +5,11 @@ steps:
     agents:
       queue: default
   - label: Run Docker Build
-    command: docker build . 
     agents:
       queue: kubernetes
     plugins:
+      - docker#v5.11.0:
+        image: "golang:1.21"
       - kubernetes:
           gitEnvFrom:
             - secretRef:
