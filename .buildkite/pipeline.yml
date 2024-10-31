@@ -2,13 +2,10 @@
 steps:
   - label: hello
     key: hello
+    command: echo "Hello, world!"
     agents:
       queue: kubernetes
     plugins:
-     - kubernetes:
-          gitEnvFrom:
-            - secretRef:
-                name: ssh-credentials
   - label: Run Docker Build
     key: docker-build
     agents:
@@ -17,7 +14,3 @@ steps:
       - docker-compose#v5.3.0:
           build: cdk
           config: .buildkite/docker-compose.ci.yml
-      - kubernetes:
-          gitEnvFrom:
-            - secretRef:
-                name: ssh-credentials
