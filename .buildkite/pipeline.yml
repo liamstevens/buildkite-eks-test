@@ -1,15 +1,22 @@
 ---
 steps:
-  - label: Build and test CDK App
-    command: echo Hello World!
-    agents:
-      queue: default
-  - label: Run Docker Build
+  - label: hello
+    key: hello
     agents:
       queue: kubernetes
     plugins:
-      - docker#v5.11.0:
-        image: "golang:1.21"
+     - kubernetes:
+          gitEnvFrom:
+            - secretRef:
+                name: ssh-credentials
+  - label: Run Docker Build
+    key: docker-build
+    agents:
+      queue: kubernetes
+    plugins:
+      - docker-compose#v5.3.0:
+          build: cdk
+          config: .buildkite/docker-compose.ci.yml
       - kubernetes:
           gitEnvFrom:
             - secretRef:
