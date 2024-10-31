@@ -1,12 +1,6 @@
----
 steps:
-  - label: hello
-    key: hello
-    command: echo "Hello, world!"
-    agents:
-      queue: kubernetes
-    plugins:
-  - label: Run Docker Build
+  - name: ":docker: Build"
+    label: Run Docker Build
     key: docker-build
     agents:
       queue: kubernetes
