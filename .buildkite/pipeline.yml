@@ -5,6 +5,7 @@ steps:
     agents:
       queue: default
   - label: Run Docker Build
+    command: docker build .
     agents:
       queue: kubernetes
     plugins:
